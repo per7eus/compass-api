@@ -25,7 +25,7 @@ app.include_router(auth.auth_router)
 
 @app.get("/ping")
 async def ping():
-    return {"ping": "pong"}
+    return {"Are we suitable for each other?": "Uniquely!!!"}
 
 
 if __name__ == "__main__":

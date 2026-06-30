@@ -17,8 +17,8 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd "/home/template-fast-api" 
+            cd "/home/compass-api" 
             ls 
-            pm2 stop template-fast-api 
+            pm2 stop  compass-api
             git pull 
-            pm2 start template-fast-api
+            pm2 start compass-api
