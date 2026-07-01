@@ -20,8 +20,8 @@ class Sessions(Base):
     user1_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
     user2_id: Mapped[int|None] = mapped_column(ForeignKey("user.id"),nullable=True)
 
-    resource1: Mapped[str] = mapped_column(String)
-    resource2: Mapped[str|None] = mapped_column(String, nullable=True)
+    answer1: Mapped[str] = mapped_column(String)
+    answer2: Mapped[str|None] = mapped_column(String, nullable=True)
 
     result: Mapped[str|None] = mapped_column(String, nullable=True)
 
