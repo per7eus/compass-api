@@ -9,6 +9,8 @@ from .services.user import UserService
 from .repositories.user import UserRepository
 from .services.auth import SECRET_KEY, ALGORITHM
 
+from .services.session import SessionService
+from .repositories.session import SessionRepository
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
@@ -42,3 +44,11 @@ def get_user_repository(sessions: AsyncSession = Depends(get_session)):
 
 def get_user_service(repository: UserRepository = Depends(get_user_repository)):
     return UserService(repository)
+
+
+def get_session_repository(sessions: AsyncSession = Depends(get_session)):
+    return SessionRepository(sessions)
+
+
+def get_session_service(repository: SessionRepository = Depends(get_session_repository)):
+    return SessionService(repository)
