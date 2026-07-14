@@ -5,7 +5,10 @@ from collections.abc import AsyncGenerator
 DATABASE_URL = "sqlite+aiosqlite:///database.db"
 
 
-engine = create_async_engine(DATABASE_URL, echo=True)
+engine = create_async_engine(DATABASE_URL, echo=True,connect_args={
+        "timeout": 30  # Ждать 30 секунд перед ошибкой
+    }
+)
 AsyncSessionLocal = async_sessionmaker(
     bind=engine,
     class_=AsyncSession,

@@ -2,8 +2,7 @@ import uvicorn
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
-from .routers import user
-from .routers import auth
+from .routers import router
 from .database.session import  engine
 from .database.models import Base
 
@@ -19,8 +18,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 
-app.include_router(user.user_router)
-app.include_router(auth.auth_router)
+app.include_router(router)
 
 
 @app.get("/ping")
