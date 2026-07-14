@@ -7,7 +7,7 @@ from ..repositories.user import UserRepository
 from ..services import user
 from ..services.user import UserService
 from ..schemas.user import CreateUserSchema
-from  ..database.models import Users
+from  ..database.models import User
 from ..dependencies import get_current_user, get_user_repository, get_user_service
 
 

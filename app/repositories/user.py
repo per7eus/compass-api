@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
-from ..database.models import Users
+from ..database.models import User
 
 class UserRepository:
     def __init__(self, session: AsyncSession) -> None:
@@ -9,7 +9,7 @@ class UserRepository:
 
     async def create(self, tid:int) -> str:
         try:
-            user = Users(tid=tid)
+            user = User(tid=tid)
             self.session.add(user)
             await self.session.commit()
 

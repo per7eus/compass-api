@@ -3,9 +3,10 @@ from pydantic import BaseModel
 
 class CreateSessionSchema(BaseModel):
     id1: int
-    answer1: str
+    answer1: dict[str, str]
+    test_id: int
 
 
 class JoinSessionSchema(BaseModel):
     id2: int
-    answer2: str
+    answer2: dict[str, str]
