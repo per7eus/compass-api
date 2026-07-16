@@ -7,6 +7,16 @@ class CreateSessionSchema(BaseModel):
     test_id: int
 
 
+class CreateSessionByTidSchema(BaseModel):
+    tid1: int
+    answer1: dict[str, str]
+    test_id: int
+
+
 class JoinSessionSchema(BaseModel):
     id2: int
+    answer2: dict[str, str]
+
+class JoinSessionByTidSchema(BaseModel):
+    tid2: int
     answer2: dict[str, str]
