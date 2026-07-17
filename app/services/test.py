@@ -9,3 +9,11 @@ class TestService:
 
     async def create(self, test):
         return await self.repository.create(test.get("questions"), test.get("name"))
+
+    async def get_all(self):
+        tests =  await self.repository.get_all()
+        result = {}
+        for test in tests:
+            result.update({test.id: {"id": test.id,"name":test.name, "questions": test.questions}})
+        return result
+
