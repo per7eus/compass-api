@@ -12,3 +12,7 @@ class TestRepository:
         self.session.add(test)
         await self.session.commit()
         return test.id
+
+    async def get_all(self):
+        test = await self.session.execute(select(Test))
+        return test.scalars().all()
