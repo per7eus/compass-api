@@ -6,7 +6,7 @@ from fastapi.security import APIKeyHeader
 from .routers import router
 from .database.session import  engine
 from .database.models import Base
-from .config import SERVICE_API_KEY
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -16,21 +16,7 @@ async def lifespan(app: FastAPI):
 
     await engine.dispose()
 
-
-
-api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
-
-
-async def verify_api_key(api_key: str = Depends(api_key_header)):
-    if api_key != SERVICE_API_KEY:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid API key"
-        )
-
-
-app = FastAPI(lifespan=lifespan,
-              dependencies=[Depends(verify_api_key)])
+app = FastAPI(lifespan=lifespan)
 
 
 app.include_router(router)
